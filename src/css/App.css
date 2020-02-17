@@ -1,0 +1,77 @@
+.navbar {
+  margin-bottom: 16px;
+  border-bottom: 1px solid lightgray;
+}
+
+.nav-link {
+  /* text-decoration: underline; */
+
+}
+
+/* .is-primary {
+  background-color: #F7CB00 !important;
+} */
+
+.section {
+  padding: 1em;
+}
+
+.logo {
+  padding-left: 14px;
+}
+
+/* .control {
+  margin-bottom: 22px;
+} */
+
+.field {
+  min-height: 44px;
+}
+
+.recipe-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* .notification {
+  margin-bottom: 24px;
+} */
+
+.content h3 {
+  font-weight: 300;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.expenses-list {
+  /* padding-left: 24px; */
+  /* padding: 88px; */
+  padding-right: 16px;
+}
+
+.card {
+  margin-bottom: 18px;
+  padding: 8px;
+}
+
+.has-text-danger:hover {
+  cursor: pointer;
+}
+
+.form-area {
+  padding-right: 80px;
+}
+
+
+.app-container {
+  margin-top: 20px;
+  padding: 20px;
+  /* padding */
+}
+
+.faq-item {
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
