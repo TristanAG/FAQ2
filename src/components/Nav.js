@@ -10,6 +10,10 @@ function Nav() {
   const [isActive, setIsActive] = React.useState('')
   const [activeMenuItem, setActiveMenuItem] = React.useState('')
 
+  const omega3sNavOption = 'omega-3s-nav-option'
+  const softGelsNavOption = 'soft-gels-nav-option'
+
+
   const products = {
     "meta": {
         "total_count": 103
@@ -357,6 +361,7 @@ function Nav() {
         }
     ]
 }
+  const productsCount = products.items.length
 
   const bulks = {
     "meta": {
@@ -565,18 +570,13 @@ function Nav() {
         }
     ]
 }
+  const bulksCount = bulks.items.length
 
   function closeNavOnMobile() {
     setIsActive(false)
   }
 
   function handleNavClick(navClick) {
-    // alert('handle nav click ' + navClick)
-
-    //this code executes when you select a nav header link
-    //it needs to first know if a tab is active, and activeMenuItem is telling us that info
-      //so therefore if activeMenuItem === navClick
-        //that means to close it
     if (activeMenuItem === navClick) {
       setIsActive('')
       setActiveMenuItem('')
@@ -602,10 +602,13 @@ function Nav() {
       </p>
       <ul className="menu-list">
         <li>
-          <li onClick={() => handleNavClick('omega-3s-tab')}>
-            <a>Omega-3s <span className="tag is-info is-pulled-right">{products.meta.total_count}</span></a>
+          <li
+            onClick={() => handleNavClick(omega3sNavOption)}
+            className={isActive === omega3sNavOption && 'is-active has-background-white-ter'}
+          >
+            <a>Omega-3s <span className="tag is-info is-pulled-right">{productsCount}</span></a>
           </li>
-          <ul className={isActive === 'omega-3s-nav-option' ? 'is-active' : 'hidden'} name="omega-3s-menu">
+          <ul className={isActive === omega3sNavOption ? 'is-active' : 'hidden'}>
             {products.items.map(product => (
               <li>
                 <Link to={{
@@ -629,8 +632,13 @@ function Nav() {
       </p>
       <ul className="menu-list">
         <li>
-          <li onClick={() => handleNavClick('soft-gels-nav-option')}><a>Soft Gels</a></li>
-          <ul className={isActive === 'soft-gels-nav-option' ? 'is-active' : 'hidden'}>
+          <li
+            onClick={() => handleNavClick(softGelsNavOption)}
+            className={isActive === softGelsNavOption && 'is-active has-background-white-ter'}
+          >
+            <a>Soft Gels <span className="tag is-info is-pulled-right">{bulksCount}</span></a>
+          </li>
+          <ul className={isActive === softGelsNavOption ? 'is-active' : 'hidden'}>
             {bulks.items.map(bulk => (
               <li>
                 <Link to={{
