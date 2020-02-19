@@ -200,7 +200,7 @@ function Product(props) {
 
           <h3 className="has-text-grey-light">{props.location.productName}</h3>
             <small>{props.location.dataRef}</small>
-          <h2 className="has-text-grey">{product.title}</h2>
+          <h2 className="has-text-grey">{props.location.productName}</h2>
         </div>
 
         <div class="tabs is-boxed">
