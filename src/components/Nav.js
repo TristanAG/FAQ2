@@ -15,32 +15,68 @@ function Nav() {
   return (
     <aside class="menu">
       <p class="menu-label">
-        <img src="https://www.nordicnaturals.com/static/version1581543764/frontend/NordicNaturals/default/en_US/images/logo.png" style={{width: '140px'}}/>
+        <Link to={{pathname: '/'}}>
+          <img src="https://www.nordicnaturals.com/static/version1581543764/frontend/NordicNaturals/default/en_US/images/logo.png" style={{width: '140px'}}/>
+        </Link>
       </p>
       <ul class="menu-list">
         <li><a>Search</a></li>
       </ul>
       <p class="menu-label">
-        Nordic FAQs
+        Products
       </p>
       <ul class="menu-list">
-        <li>Products</li>
         <li>
-          <ul>
-            <li><a>Actives</a></li>
-            <ul>
-              {/* <li><Link to="/product" query={{ the: 'query' }}>Probiotic Pixies</Link></li> */}
-              <li><Link to="/product">Ultimate Omega 2X</Link></li>
-              <li><Link to={{pathname: '/product', productName: 'Ultimate Omega 333X', dataRef: 'http://datarefurl.com'}}>Ultimate Omega 333X</Link>
-              </li>
-            </ul>
-            <li><a>Non-Actives</a></li>
-          </ul>
+          <li><a>Omega-3s</a></li>
+          {/* <ul>
+            <li><Link to={{pathname: '/product', productName: 'Ultimate Omega 333X', dataRef: 'http://datarefurl.com'}}>Ultimate Omega 333X</Link></li>
+          </ul> */}
+          <li><a>Probiotics & More</a></li>
+          <li><a>Vitamins & More</a></li>
+          <li><a>Gummies</a></li>
         </li>
-        <li><a>Bulks</a></li>
-        <li><a>Raw Materials</a></li>
-        <li><a>Nordic Standard</a></li>
       </ul>
+
+      <p class="menu-label">
+        Bulks
+      </p>
+      <ul class="menu-list">
+        <li>
+          <li><a>Soft Gels</a></li>
+          <ul>
+            <li><Link to={{pathname: '/product', productName: 'Nordic Flora Kids Probiotic Pixies', dataRef: 'http://datarefurl.com'}}>Nordic Flora Kids Probiotic Pixies</Link></li>
+          </ul>
+          <li><a>Capsules</a></li>
+          <li><a>Gummies</a></li>
+          <li><a>Liquid</a></li>
+        </li>
+      </ul>
+
+      <p class="menu-label">
+        Raw Materials
+      </p>
+      <ul class="menu-list">
+        <li>
+          <li><a>Actives</a></li>
+          {/* <ul>
+            <li><Link to={{pathname: '/product', productName: 'Ultimate Omega 333X', dataRef: 'http://datarefurl.com'}}>Ultimate Omega 333X</Link></li>
+          </ul> */}
+          <li><a>Non-Actives</a></li>
+        </li>
+      </ul>
+      <p class="menu-label">
+        Nordic Standards
+      </p>
+      <ul class="menu-list">
+        <li>
+          <li><a>Nordic Standards</a></li>
+        </li>
+      </ul>
+
+
+      {/* <li><a>Bulks</a></li>
+      <li><a>Raw Materials</a></li>
+      <li><a>Nordic Standard</a></li> */}
     </aside>
   )
 }

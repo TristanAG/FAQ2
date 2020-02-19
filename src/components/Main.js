@@ -29,10 +29,10 @@ function Main() {
     <Router>
       <div className="app-container">
         <div className="columns">
-          <div className="col is-two-fifth">
+          <div className="column is-one-fourth">
             <Nav />
           </div>
-          <div class="col is-three-fifths">
+          <div className="column is-three-quarters">
               {
                 <>
                   <Route path="/product/" component={Product} />

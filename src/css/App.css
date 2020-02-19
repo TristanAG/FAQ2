@@ -75,3 +75,7 @@
   margin-top: 4px;
   margin-bottom: 24px;
 }
+
+.hidden {
+  display: none;
+}

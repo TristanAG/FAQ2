@@ -180,40 +180,92 @@ function Product(props) {
     //if the opening strying is not a tag <>
       //do not modify and run as normal
 
+
+
+  }
+
+  function handleClick(tab) {
+    hideAll()
+    alert('#' + tab + '-tab')
+  }
+
+  function hideAll() {
+
   }
 
   return (
     <section className="grocery-list">
       <div className="container">
         <div className="content">
+
           <h3 className="has-text-grey-light">{props.location.productName}</h3>
-          <small>{props.location.dataRef}</small>
+            <small>{props.location.dataRef}</small>
           <h2 className="has-text-grey">{product.title}</h2>
+        </div>
 
-          <div>
-            {cleanedProductData.map((wrd) => {
-              return (
-                <div style={{marginBottom: '12px'}}>
+        <div class="tabs is-boxed">
+          <ul>
+            <li className="is-active" onClick={() => handleClick('general-information')} value="test">
+              <a>
+                  {/* <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span> */}
+                <span>General Information</span>
+              </a>
+            </li>
+            <li>
+              <a>
+                  {/* <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span> */}
+                <span onClick={() => handleClick('faqs')}>FAQs</span>
+              </a>
+            </li>
+            <li>
+              <a>
+                  {/* <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span> */}
+                <span onClick={() => handleClick('images')}>Images</span>
+              </a>
+            </li>
+            <li>
+              <a>
+                  {/* <span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span> */}
+                <span onClick={() => handleClick('revision-version')}>Revision Version</span>
+              </a>
+            </li>
+          </ul>
+        </div>
 
-                  <b>{wrd.split(':')[0]}</b>
-                  {wrd.split(':')[1]}
-                </div>
-              )
-            })}
-          </div>
-          {/* <p>{retailPrice}</p> */}
-          <img src={productImage} style={{width: '400px'}}/>
+        {/* <div>
+          {cleanedProductData.map((wrd) => {
+            return (
+              <div style={{marginBottom: '12px'}}>
+                <b>{wrd.split(':')[0]}</b>
+                {wrd.split(':')[1]}
+              </div>
+            )
+          })}
+        </div> */}
 
-        <h2 className="has-text-grey">FAQs</h2>
+        {/* <img src={productImage} style={{width: '400px'}}/> */}
+
+        {/* <h2 className="has-text-grey">FAQs</h2>
         {product.faqs.map(faq => {
           return (
             <div className="faq-item">
               <div className="has-text-info">{faq.value.question.toLowerCase()}</div>
-              <small>{faq.value.answer.split('>')[2]}</small>
-              {/* <small>{faq.value.answer}</small> */}
+              <small dangerouslySetInnerHTML={{__html: faq.value.answer}} />
             </div>
           )
-        })}
+        })} */}
+
+      <div id="general-information-tab">
+        <p>General information content....</p>
+      </div>
+      <div id="faqs-tab" className="hidden">
+        <p>FAQs content</p>
+      </div>
+      <div id="images-tab" className="hidden">
+        <p>Images tab content</p>
+      </div>
+      <div id="revision-version-tab" className="hidden">
+        <p>revision version tab content....</p>
       </div>
       </div>
     </section>
