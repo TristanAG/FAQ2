@@ -2,14 +2,7 @@ import React from 'react'
 
 function Product(props) {
 
-  const [productData, setProductData] = React.useState({})
-
-  // const subscription = props.location.terp.subscribe();
-
-  console.log('product data')
-  console.log(props.location.productName)
-
-  var product = {
+  const product = {
     "id": 277,
     "meta": {
         "type": "faqs.FinishedGood",
@@ -149,12 +142,10 @@ function Product(props) {
     ]
   }
 
-//we're going to have to do some mad string sanitization here... i think we need to
-//well, we can handle this in a couple ways.
-//the first way is that i can just manually scrub it on the fly. it seems like i will have to do some scrubbing anyways, so that's ok
-//im not really sure how i would do it now, maybe there is a library to just trim excess html content.
-//or better yet, just go into the database and sanitize the data
+  const [productData, setProductData] = React.useState({})
 
+  const [tabActive, setTabActive] = React.useState('general-information-tab')
+  const [activeTabItem, setActiveTabItem] = React.useState('')
 
   var content = product.info[0].value.content
   var contentPieces = content.split('</p>')
@@ -170,27 +161,13 @@ function Product(props) {
   const retailPrice = cleanedProductData[3]
   const productImage = cleanedProductData[4].split(': ')[1]
 
-  sanitizeFaqs(product.faqs)
 
-  function sanitizeFaqs(faqs) {
-    //if the opening string is a <p> tag
-      //run code to strip that style
-    //if the opening string is a <garblygook>
-      //run code to handle that version
-    //if the opening strying is not a tag <>
-      //do not modify and run as normal
-
-
-
-  }
-
-  function handleClick(tab) {
-    hideAll()
-    alert('#' + tab + '-tab')
-  }
-
-  function hideAll() {
-
+  function handleClick(navClick) {
+    var temp = navClick + '-tab'
+    if (activeTabItem !== temp) {
+      setTabActive(temp)
+      setActiveTabItem(temp)
+    }
   }
 
   return (
@@ -205,34 +182,24 @@ function Product(props) {
 
         <div class="tabs is-boxed">
           <ul>
-            <li className="is-active" onClick={() => handleClick('general-information')} value="test">
-              <a>
-                  {/* <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span> */}
-                <span>General Information</span>
-              </a>
+            <li className={tabActive === 'general-information-tab' && 'is-active'} onClick={() => handleClick('general-information')}>
+              <a><span>General Information</span></a>
             </li>
-            <li>
-              <a>
-                  {/* <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span> */}
-                <span onClick={() => handleClick('faqs')}>FAQs</span>
-              </a>
+            <li className={tabActive === 'faqs-tab' && 'is-active'} onClick={() => handleClick('faqs')}>
+              <a><span>FAQs</span></a>
             </li>
-            <li>
-              <a>
-                  {/* <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span> */}
-                <span onClick={() => handleClick('images')}>Images</span>
-              </a>
+            <li className={tabActive === 'images-tab' && 'is-active'} onClick={() => handleClick('images')}>
+              <a><span>Images</span></a>
             </li>
-            <li>
-              <a>
-                  {/* <span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span> */}
-                <span onClick={() => handleClick('revision-version')}>Revision Version</span>
-              </a>
+            <li className={tabActive === 'revision-version-tab' && 'is-active'} onClick={() => handleClick('revision-version')}>
+              <a><span>Revision Version</span></a>
             </li>
           </ul>
         </div>
 
-        {/* <div>
+
+      <div id="general-information-tab" className={tabActive === 'general-information-tab' ? 'is-active' : 'hidden'}>
+        <div>
           {cleanedProductData.map((wrd) => {
             return (
               <div style={{marginBottom: '12px'}}>
@@ -241,11 +208,9 @@ function Product(props) {
               </div>
             )
           })}
-        </div> */}
-
-        {/* <img src={productImage} style={{width: '400px'}}/> */}
-
-        {/* <h2 className="has-text-grey">FAQs</h2>
+        </div>
+      </div>
+      <div id="faqs-tab" className={tabActive === 'faqs-tab' ? 'is-active' : 'hidden'}>
         {product.faqs.map(faq => {
           return (
             <div className="faq-item">
@@ -253,18 +218,12 @@ function Product(props) {
               <small dangerouslySetInnerHTML={{__html: faq.value.answer}} />
             </div>
           )
-        })} */}
-
-      <div id="general-information-tab">
-        <p>General information content....</p>
+        })}
       </div>
-      <div id="faqs-tab" className="hidden">
-        <p>FAQs content</p>
+      <div id="images-tab" className={tabActive === 'images-tab' ? 'is-active' : 'hidden'}>
+        <img src={productImage} style={{width: '400px'}}/>
       </div>
-      <div id="images-tab" className="hidden">
-        <p>Images tab content</p>
-      </div>
-      <div id="revision-version-tab" className="hidden">
+      <div id="revision-version-tab" className={tabActive === 'revision-version-tab' ? 'is-active' : 'hidden'}>
         <p>revision version tab content....</p>
       </div>
       </div>
