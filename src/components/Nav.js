@@ -1,12 +1,10 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import Product from './Product'
-// import { FirebaseContext } from '../firebase'
+import NavOption from './NavOption'
 
 function Nav() {
-  // const { user, firebase } = React.useContext(FirebaseContext)
   const [preferences, setPreferences] = React.useState({})
-  // const [isActive, setIsActive] = React.useState(false)
   const [isActive, setIsActive] = React.useState('')
   const [activeMenuItem, setActiveMenuItem] = React.useState('')
 
@@ -572,10 +570,6 @@ function Nav() {
 }
   const bulksCount = bulks.items.length
 
-  function closeNavOnMobile() {
-    setIsActive(false)
-  }
-
   function handleNavClick(navClick) {
     if (activeMenuItem === navClick) {
       setIsActive('')
@@ -603,25 +597,14 @@ function Nav() {
       </p>
       <ul className="menu-list">
         <li>
-          <li
-            onClick={() => handleNavClick(omega3sNavOption)}
-            className={isActive === omega3sNavOption && 'is-active has-background-white-ter'}
-          >
-            <a>Omega-3s <span className="tag is-info is-pulled-right">{productsCount}</span></a>
-          </li>
-          <ul className={isActive === omega3sNavOption ? 'is-active' : 'hidden'}>
-            {products.items.map(product => (
-              <li>
-                <Link to={{
-                  pathname: '/product',
-                  productName: product.name,
-                  dataRef: 'http://datarefurl.com'
-                }}>
-                  {product.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <NavOption
+            option={omega3sNavOption}
+            handleNavClick={handleNavClick}
+            items={products}
+            itemType="product"
+            isActive={isActive}
+            itemCount={productsCount}
+          />
           <li><a>Probiotics & More</a></li>
           <li><a>Vitamins & More</a></li>
           <li><a>Gummies</a></li>
@@ -633,25 +616,14 @@ function Nav() {
       </p>
       <ul className="menu-list">
         <li>
-          <li
-            onClick={() => handleNavClick(softGelsNavOption)}
-            className={isActive === softGelsNavOption && 'is-active has-background-white-ter'}
-          >
-            <a>Soft Gels <span className="tag is-info is-pulled-right">{bulksCount}</span></a>
-          </li>
-          <ul className={isActive === softGelsNavOption ? 'is-active' : 'hidden'}>
-            {bulks.items.map(bulk => (
-              <li>
-                <Link to={{
-                  pathname: '/bulk',
-                  productName: bulk.name,
-                  dataRef: 'http://datarefurl.com'
-                }}>
-                  {bulk.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <NavOption
+            option={softGelsNavOption}
+            handleNavClick={handleNavClick}
+            items={bulks}
+            itemType="bulk"
+            isActive={isActive}
+            itemCount={bulksCount}
+          />
           <li><a>Capsules</a></li>
           <li><a>Gummies</a></li>
           <li><a>Liquid</a></li>
