@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom"
 
 import '../css/App.css'
 
-import Nav from './Nav'
+import Nav from './Nav/Nav'
 import Home from './Home'
-import Product from './Product'
+import Product from './Product/Product'
 
 function Main() {
   const user = 'Tristan'

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import Product from './Product'
+import Product from '../Product/Product'
 import NavOption from './NavOption'
 
 function Nav() {
@@ -618,6 +618,7 @@ function Nav() {
       <ul className="menu-list">
         <li>
           <NavOption
+            optionTitle='Soft Gels'
             option={softGelsNavOption}
             handleNavClick={handleNavClick}
             items={bulks}

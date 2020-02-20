@@ -1,4 +1,6 @@
 import React from 'react'
+import Tab from './Tab'
+import TabContent from './TabContent'
 
 function Product(props) {
 
@@ -144,7 +146,7 @@ function Product(props) {
 
   const [productData, setProductData] = React.useState({})
 
-  const [tabActive, setTabActive] = React.useState('general-information-tab')
+  const [tabActive, setTabActive] = React.useState('general-information')
   const [activeTabItem, setActiveTabItem] = React.useState('')
 
   var content = product.info[0].value.content
@@ -163,10 +165,9 @@ function Product(props) {
 
 
   function handleClick(navClick) {
-    var temp = navClick + '-tab'
-    if (activeTabItem !== temp) {
-      setTabActive(temp)
-      setActiveTabItem(temp)
+    if (activeTabItem !== navClick) {
+      setTabActive(navClick)
+      setActiveTabItem(navClick)
     }
   }
 
@@ -182,23 +183,24 @@ function Product(props) {
 
         <div class="tabs is-boxed">
           <ul>
-            <li className={tabActive === 'general-information-tab' && 'is-active'} onClick={() => handleClick('general-information')}>
-              <a><span>General Information</span></a>
-            </li>
-            <li className={tabActive === 'faqs-tab' && 'is-active'} onClick={() => handleClick('faqs')}>
-              <a><span>FAQs</span></a>
-            </li>
-            <li className={tabActive === 'images-tab' && 'is-active'} onClick={() => handleClick('images')}>
-              <a><span>Images</span></a>
-            </li>
-            <li className={tabActive === 'revision-version-tab' && 'is-active'} onClick={() => handleClick('revision-version')}>
-              <a><span>Revision Version</span></a>
-            </li>
+            <Tab tabActive={tabActive} handleClick={handleClick} tab='general-information' />
+            <Tab tabActive={tabActive} handleClick={handleClick} tab='faqs' />
+            <Tab tabActive={tabActive} handleClick={handleClick} tab='images' />
+            <Tab tabActive={tabActive} handleClick={handleClick} tab='revision-version' />
           </ul>
         </div>
 
 
-      <div id="general-information-tab" className={tabActive === 'general-information-tab' ? 'is-active' : 'hidden'}>
+
+      <TabContent
+        tabs={['general-information', 'faqs', 'images', 'revision-version']}
+        tab={tabActive}
+        itemData={product.info[0].value.content}
+        faqsData={product.faqs}
+        itemType={'product'}
+      />
+      {/* <TabContent tabContent="faqs" tabActive={tabActive} data={product.faqs} /> */}
+      {/* <div id="general-information" className={tabActive === 'general-information' ? 'is-active' : 'hidden'}>
         <div>
           {cleanedProductData.map((wrd) => {
             return (
@@ -209,8 +211,8 @@ function Product(props) {
             )
           })}
         </div>
-      </div>
-      <div id="faqs-tab" className={tabActive === 'faqs-tab' ? 'is-active' : 'hidden'}>
+      </div> */}
+      {/* <div id="faqs" className={tabActive === 'faqs' ? 'is-active' : 'hidden'}>
         {product.faqs.map(faq => {
           return (
             <div className="faq-item">
@@ -218,14 +220,14 @@ function Product(props) {
               <small dangerouslySetInnerHTML={{__html: faq.value.answer}} />
             </div>
           )
-        })}
-      </div>
-      <div id="images-tab" className={tabActive === 'images-tab' ? 'is-active' : 'hidden'}>
+        })} */}
+      {/* </div> */}
+      {/* <div id="images" className={tabActive === 'images' ? 'is-active' : 'hidden'}>
         <img src={productImage} style={{width: '400px'}}/>
       </div>
-      <div id="revision-version-tab" className={tabActive === 'revision-version-tab' ? 'is-active' : 'hidden'}>
+      <div id="revision-version" className={tabActive === 'revision-version' ? 'is-active' : 'hidden'}>
         <p>revision version tab content....</p>
-      </div>
+      </div> */}
       </div>
     </section>
   )
