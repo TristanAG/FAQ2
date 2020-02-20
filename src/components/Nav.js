@@ -593,7 +593,7 @@ function Nav() {
         <Link to={{pathname: '/'}}>
           <img src="https://www.nordicnaturals.com/static/version1581543764/frontend/NordicNaturals/default/en_US/images/logo.png" style={{width: '140px'}}/>
         </Link>
-        
+
       </p>
       <ul className="menu-list">
         <li><a>Search</a></li>
