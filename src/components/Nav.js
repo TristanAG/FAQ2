@@ -598,6 +598,7 @@ function Nav() {
       <ul className="menu-list">
         <li>
           <NavOption
+            optionTitle='Omega-3s'
             option={omega3sNavOption}
             handleNavClick={handleNavClick}
             items={products}
