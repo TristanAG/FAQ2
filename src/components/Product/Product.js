@@ -1,14 +1,25 @@
 import React from 'react'
-import Tab from './Tab'
-import TabContent from './TabContent'
-
-
-//when you load up the product data, it shold all be parsed out here, then passed into the appropriate component
-//... so if we imagine that each thing has tabs, then that means the tab logic is reusable. or... should be.
-// i should be able to construct the tab component and call it on, then each variety of content that loads can be its own component.
-//this could be done anyway... but in this way, it's making it so I can reuse my tab... let's see...
+import Tabs from '../Tabs'
 
 function Product(props) {
+
+  //what's the smartest way to parse all this out without it being an overwhelmaton and make it super easy to read and understand?
+  //all the top level stuff should be on the main page i suppose... although most of it should be in general information
+  //so to start, let's grab the data that we know is consistent and make it Top Level Data
+  //that is ...
+    //title
+    //product_type
+    //bulk
+    //name (?)
+    //storage conditions (?)
+    //allergens (could probably be own tab)
+    //featured (?)
+    //featured headline (?)
+    //calling them product data is fine
+
+  //ok, so that's probably good for now on the TLD
+  //now i need to deal with the info ... which is basically the general information
+    //of which i will parse out in the general information tab component!
 
   const product = {
     "id": 277,
@@ -150,88 +161,25 @@ function Product(props) {
     ]
   }
 
-  const [productData, setProductData] = React.useState({})
-
-  const [tabActive, setTabActive] = React.useState('general-information')
-  const [activeTabItem, setActiveTabItem] = React.useState('')
-
-  var content = product.info[0].value.content
-  var contentPieces = content.split('</p>')
-
-  const productDataPieces = content.split('</p>')
-  const cleanedProductData = productDataPieces.map(piece => {
-    return piece.split('').splice(3).join('')
+  //productData is Top Level Data (TLD)
+  const [productData, setProductData] = React.useState({
+    'title': product.title,
+    'productType': product.product_type,
+    'bulk': product.bulk
   })
 
-  const upc = cleanedProductData[0]
-  const webPrice = cleanedProductData[1]
-  const caseUpc = cleanedProductData[2]
-  const retailPrice = cleanedProductData[3]
-  const productImage = cleanedProductData[4].split(': ')[1]
-
-
-  function handleClick(navClick) {
-    if (activeTabItem !== navClick) {
-      setTabActive(navClick)
-      setActiveTabItem(navClick)
-    }
-  }
+  const [productInfo, setProductInfo] = React.useState(product.info)
+  const [faqs, setFaqs] = React.useState(product.faqs)
 
   return (
     <section className="grocery-list">
       <div className="container">
         <div className="content">
-
-          <h3 className="has-text-grey-light">{props.location.itemName}</h3>
-            <small>{props.location.dataRef}</small>
-          <h2 className="has-text-grey">{props.location.itemName}</h2>
+          <h2 className="has-text-grey">{productData.title}</h2>
+          <h4>Product Type: {productData.productType}</h4>
+          <h4>Bulk: {productData.bulk.title} <small>{productData.bulk.meta.detail_url}</small></h4>
         </div>
-
-        <div className="tabs is-boxed">
-          <ul>
-            <Tab tabActive={tabActive} handleClick={handleClick} tab='general-information' />
-            <Tab tabActive={tabActive} handleClick={handleClick} tab='faqs' />
-            <Tab tabActive={tabActive} handleClick={handleClick} tab='images' />
-            <Tab tabActive={tabActive} handleClick={handleClick} tab='revision-version' />
-          </ul>
-        </div>
-
-      <TabContent
-        tabs={['general-information', 'faqs', 'images', 'revision-version']}
-        tab={tabActive}
-        itemData={product.info[0].value.content}
-        faqsData={product.faqs}
-        itemType={'product'}
-      />
-      {/* <TabContent tabContent="faqs" tabActive={tabActive} data={product.faqs} /> */}
-      {/* <div id="general-information" className={tabActive === 'general-information' ? 'is-active' : 'hidden'}>
-        <div>
-          {cleanedProductData.map((wrd) => {
-            return (
-              <div style={{marginBottom: '12px'}}>
-                <b>{wrd.split(':')[0]}</b>
-                {wrd.split(':')[1]}
-              </div>
-            )
-          })}
-        </div>
-      </div> */}
-      {/* <div id="faqs" className={tabActive === 'faqs' ? 'is-active' : 'hidden'}>
-        {product.faqs.map(faq => {
-          return (
-            <div className="faq-item">
-              <div className="has-text-info">{faq.value.question.toLowerCase()}</div>
-              <small dangerouslySetInnerHTML={{__html: faq.value.answer}} />
-            </div>
-          )
-        })} */}
-      {/* </div> */}
-      {/* <div id="images" className={tabActive === 'images' ? 'is-active' : 'hidden'}>
-        <img src={productImage} style={{width: '400px'}}/>
-      </div>
-      <div id="revision-version" className={tabActive === 'revision-version' ? 'is-active' : 'hidden'}>
-        <p>revision version tab content....</p>
-      </div> */}
+        <Tabs info={productInfo} faqs={faqs} tabList={['general-information', 'faqs', 'images', 'revision-version']} />
       </div>
     </section>
   )
