@@ -2,6 +2,12 @@ import React from 'react'
 import Tab from './Tab'
 import TabContent from './TabContent'
 
+
+//when you load up the product data, it shold all be parsed out here, then passed into the appropriate component
+//... so if we imagine that each thing has tabs, then that means the tab logic is reusable. or... should be.
+// i should be able to construct the tab component and call it on, then each variety of content that loads can be its own component.
+//this could be done anyway... but in this way, it's making it so I can reuse my tab... let's see...
+
 function Product(props) {
 
   const product = {
@@ -181,7 +187,7 @@ function Product(props) {
           <h2 className="has-text-grey">{props.location.itemName}</h2>
         </div>
 
-        <div class="tabs is-boxed">
+        <div className="tabs is-boxed">
           <ul>
             <Tab tabActive={tabActive} handleClick={handleClick} tab='general-information' />
             <Tab tabActive={tabActive} handleClick={handleClick} tab='faqs' />
@@ -189,8 +195,6 @@ function Product(props) {
             <Tab tabActive={tabActive} handleClick={handleClick} tab='revision-version' />
           </ul>
         </div>
-
-
 
       <TabContent
         tabs={['general-information', 'faqs', 'images', 'revision-version']}
