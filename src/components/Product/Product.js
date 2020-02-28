@@ -3,24 +3,6 @@ import Tabs from '../Tabs'
 
 function Product(props) {
 
-  //what's the smartest way to parse all this out without it being an overwhelmaton and make it super easy to read and understand?
-  //all the top level stuff should be on the main page i suppose... although most of it should be in general information
-  //so to start, let's grab the data that we know is consistent and make it Top Level Data
-  //that is ...
-    //title
-    //product_type
-    //bulk
-    //name (?)
-    //storage conditions (?)
-    //allergens (could probably be own tab)
-    //featured (?)
-    //featured headline (?)
-    //calling them product data is fine
-
-  //ok, so that's probably good for now on the TLD
-  //now i need to deal with the info ... which is basically the general information
-    //of which i will parse out in the general information tab component!
-
   const product = {
     "id": 277,
     "meta": {
