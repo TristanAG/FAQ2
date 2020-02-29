@@ -159,7 +159,7 @@ function Product(props) {
         <div className="content">
           <h2 className="has-text-grey">{productData.title}</h2>
           <h4>Product Type: {productData.productType}</h4>
-          <h4>Bulk: {productData.bulk.title} <small>{productData.bulk.meta.detail_url}</small></h4>
+          <h6>Bulk: <a href={productData.bulk.meta.detail_url}>{productData.bulk.title}</a></h6>
         </div>
         <Tabs info={productInfo} faqs={faqs} tabList={['general-information', 'faqs', 'images', 'revision-version']} />
       </div>

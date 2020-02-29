@@ -8,6 +8,19 @@ function GeneralInformation({ info }) {
 
 export default GeneralInformation
 
+{/* <div id="general-information" className={tabActive === 'general-information' ? 'is-active' : 'hidden'}>
+  <div>
+    {cleanedProductData.map((wrd) => {
+      return (
+        <div style={{marginBottom: '12px'}}>
+          <b>{wrd.split(':')[0]}</b>
+          {wrd.split(':')[1]}
+        </div>
+      )
+    })}
+  </div>
+</div> */}
+
 // var content = product.info[0].value.content
 // var contentPieces = content.split('</p>')
 //

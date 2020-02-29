@@ -24,7 +24,7 @@ function Tabs({ info, faqs, tabList }) {
       </div>
 
       <TabContent
-        tab={tabActive}
+        tabActive={tabActive}
         info={info[0].value.content}
         faqs={faqs}
         itemType={'product'}
