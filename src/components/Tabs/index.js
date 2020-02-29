@@ -3,7 +3,7 @@ import Tab from './Tab'
 import TabContent from './TabContent'
 
 function Tabs({ info, faqs, tabList }) {
-  const [tabActive, setTabActive] = React.useState('general-information')
+  const [tabActive, setTabActive] = React.useState('General Information')
   const [activeTabItem, setActiveTabItem] = React.useState('')
 
   function handleClick(navClick) {
@@ -24,6 +24,7 @@ function Tabs({ info, faqs, tabList }) {
       </div>
 
       <TabContent
+        tabs={tabList}
         tabActive={tabActive}
         info={info[0].value.content}
         faqs={faqs}

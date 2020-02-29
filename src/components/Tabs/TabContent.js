@@ -2,11 +2,11 @@ import React from 'react'
 import GeneralInformation from './GeneralInformation'
 import Faqs from './Faqs'
 
-function TabContent({ tabActive, info, faqs }) {
+function TabContent({ tabActive, tabs, info, faqs }) {
   return (
     <div>
-      {tabActive === 'general-information' && <GeneralInformation info={info} />}
-      {tabActive === 'faqs' && <Faqs faqs={faqs}/>}
+      {tabActive === tabs[0] && <GeneralInformation info={info} />}
+      {tabActive === tabs[1] && <Faqs faqs={faqs}/>}
     </div>
   )
 }

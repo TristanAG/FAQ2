@@ -161,7 +161,7 @@ function Product(props) {
           <h4>Product Type: {productData.productType}</h4>
           <h6>Bulk: <a href={productData.bulk.meta.detail_url}>{productData.bulk.title}</a></h6>
         </div>
-        <Tabs info={productInfo} faqs={faqs} tabList={['general-information', 'faqs', 'images', 'revision-version']} />
+        <Tabs info={productInfo} faqs={faqs} tabList={['General Information', 'F A Q S', 'images', 'Revision Version']} />
       </div>
     </section>
   )
