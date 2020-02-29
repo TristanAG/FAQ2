@@ -4,7 +4,7 @@ import TabContent from './TabContent'
 
 function Tabs({ info, faqs, images, tabList }) {
 
-  // TODO figure out way to abstract out tab logic to DRY it out 
+  // TODO figure out way to abstract out tab logic to DRY it out
 
   const [tabActive, setTabActive] = React.useState(tabList[0])
   const [activeTabItem, setActiveTabItem] = React.useState('')
@@ -29,7 +29,7 @@ function Tabs({ info, faqs, images, tabList }) {
       <TabContent
         tabs={tabList}
         tabActive={tabActive}
-        info={info[0].value.content}
+        // info={info[0].value.content}
         faqs={faqs}
         images={images}
         itemType={'product'}

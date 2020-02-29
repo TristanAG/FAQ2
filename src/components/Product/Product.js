@@ -3,6 +3,40 @@ import Tabs from '../Tabs'
 
 function Product(props) {
 
+  const [productData, setProductData] = React.useState({})
+  const [productInfo, setProductInfo] = React.useState({})
+  const [faqs, setFaqs] = React.useState({})
+
+  const itemUrl = props.location.state.itemUrl
+  console.log('https' + itemUrl.split('http')[1])
+
+  fetch('https' + itemUrl.split('http')[1])
+    .then(response => response.json())
+    .then(json => {
+      console.log(json)
+
+      setProductData({
+        'title': json.title,
+        'productType': json.product_type,
+        'bulk': json.bulk
+      })
+
+      setProductInfo(json.info)
+      setFaqs(json.faqs)
+    })
+
+  // console.log(itemUrl)
+  // fetch(itemUrl).then({
+  //   console.log('test')
+  // })
+  // fetch(itemUrl)
+  // .then((response) => {
+  //   return response.json();
+  // })
+  // .then((data) => {
+  //   console.log(data);
+  // });
+
   const product = {
     "id": 277,
     "meta": {
@@ -143,17 +177,17 @@ function Product(props) {
     ]
   }
 
-  const [productData, setProductData] = React.useState({
-    'title': product.title,
-    'productType': product.product_type,
-    'bulk': product.bulk
-  })
-
-  const [productInfo, setProductInfo] = React.useState(product.info)
-  const [faqs, setFaqs] = React.useState(product.faqs)
+  // const [productData, setProductData] = React.useState({
+  //   'title': json.title,
+  //   'productType': json.product_type,
+  //   'bulk': json.bulk
+  // })
+  //
+  // const [productInfo, setProductInfo] = React.useState(json.info)
+  // const [faqs, setFaqs] = React.useState(json.faqs)
 
   //TODO create function to get image out of product data
-    //TODO ASK Ryan, are you configuring a way to upload images? Will it be identical to how it's formatted now (PD uploads cloudinary links or Wagtail handles it? 
+    //TODO ASK Ryan, are you configuring a way to upload images? Will it be identical to how it's formatted now (PD uploads cloudinary links or Wagtail handles it?
   const [images, setImages] = React.useState('https://res.cloudinary.com/nordic-naturals/image/upload/v1568067131/FAQ/Screen_Shot_2019-09-09_at_3.11.42_PM.png')
 
   return (
@@ -162,7 +196,7 @@ function Product(props) {
         <div className="content">
           <h2 className="has-text-grey">{productData.title}</h2>
           <h4>Product Type: {productData.productType}</h4>
-          <h6>Bulk: <a href={productData.bulk.meta.detail_url}>{productData.bulk.title}</a></h6>
+          {/* <h6>Bulk: <a href={productData.bulk.meta.detail_url}>{productData.bulk.title}</a></h6> */}
         </div>
         <Tabs info={productInfo} faqs={faqs} images={images} tabList={['General Information', 'FAQs', 'Images', 'Revision Version']} />
       </div>

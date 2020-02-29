@@ -11,17 +11,37 @@ function NavOption({ option, handleNavClick, items, isActive, itemCount, itemTyp
         <a>{optionTitle} <span className="tag is-info is-pulled-right">{itemCount}</span></a>
       </li>
       <ul className={isActive === option ? 'is-active' : 'hidden'}>
-        {items.items.map(item => (
+        {/* {items.items.map(item => (
           <li>
-            <Link to={{
-              pathname: '/' + itemType +'',
-              itemName: item.name,
-              dataRef: 'http://datarefurl.com'
+            <Link
+              to={{
+                pathname: '/product',
+                state: {
+                  itemUrl: item.meta.detail_url,
+                  itemName: item.name
+                }
             }}>
               {item.name}
             </Link>
           </li>
-        ))}
+        ))} */}
+        {items.items.map(item => {
+          return (
+            <li>
+              {console.log(item.meta.detail_url)}
+              <Link
+                to={{
+                  pathname: '/product',
+                  state: {
+                    itemUrl: item.meta.detail_url,
+                    itemName: item.name
+                  }
+              }}>
+                {item.name}
+              </Link>
+            </li>
+          )
+        })}
       </ul>
     </>
   )
