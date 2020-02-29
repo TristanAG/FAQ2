@@ -32,7 +32,7 @@ function Main() {
           <div className="column is-one-fourth">
             <Nav />
           </div>
-          <div className="column is-three-quarters">
+          <div className="column is-three-quarters" style={{paddingLeft: '44px', paddingTop: '22px'}}>
               {
                 <>
                   <Route path="/product/" component={Product} />

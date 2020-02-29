@@ -143,7 +143,6 @@ function Product(props) {
     ]
   }
 
-  //productData is Top Level Data (TLD)
   const [productData, setProductData] = React.useState({
     'title': product.title,
     'productType': product.product_type,
@@ -153,6 +152,10 @@ function Product(props) {
   const [productInfo, setProductInfo] = React.useState(product.info)
   const [faqs, setFaqs] = React.useState(product.faqs)
 
+  //TODO create function to get image out of product data
+    //TODO ASK Ryan, are you configuring a way to upload images? Will it be identical to how it's formatted now (PD uploads cloudinary links or Wagtail handles it? 
+  const [images, setImages] = React.useState('https://res.cloudinary.com/nordic-naturals/image/upload/v1568067131/FAQ/Screen_Shot_2019-09-09_at_3.11.42_PM.png')
+
   return (
     <section className="grocery-list">
       <div className="container">
@@ -161,7 +164,7 @@ function Product(props) {
           <h4>Product Type: {productData.productType}</h4>
           <h6>Bulk: <a href={productData.bulk.meta.detail_url}>{productData.bulk.title}</a></h6>
         </div>
-        <Tabs info={productInfo} faqs={faqs} tabList={['General Information', 'F A Q S', 'images', 'Revision Version']} />
+        <Tabs info={productInfo} faqs={faqs} images={images} tabList={['General Information', 'FAQs', 'Images', 'Revision Version']} />
       </div>
     </section>
   )
