@@ -23,7 +23,7 @@ function Product(props) {
           'bulkUrl': json.bulk.meta.detail_url,
           'info': json.info[0].value.content,
           'faqs': json.faqs,
-          'images': 'https://res.cloudinary.com/nordic-naturals/image/upload/v1568067131/FAQ/Screen_Shot_2019-09-09_at_3.11.42_PM.png'
+          'images': json.info[0].value.content.split('<p>Product Image: ')[1].split('</p>')[0]
         })
       })
   }
@@ -34,6 +34,8 @@ function Product(props) {
 
   return (
     <section className="grocery-list">
+      {/* {console.log('this is theplace')}
+      {console.log(productData.info && productData.info.split('<p>Product Image: ')[1].split('</p>')[0])} */}
       <div className="container">
         <div className="content">
           <h2 className="has-text-grey">{productData.title}</h2>
