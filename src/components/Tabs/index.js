@@ -29,7 +29,7 @@ function Tabs({ info, faqs, images, tabList }) {
       <TabContent
         tabs={tabList}
         tabActive={tabActive}
-        // info={info[0].value.content}
+        info={info}
         faqs={faqs}
         images={images}
         itemType={'product'}
