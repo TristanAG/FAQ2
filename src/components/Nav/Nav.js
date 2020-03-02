@@ -88,7 +88,7 @@ function Nav() {
           <li><a>Gummies</a></li>
           {productsCount &&
             <NavOption
-              optionTitle='ProductsUncategorized'
+              optionTitle='Uncategorized'
               option='products-uncategorized'
               handleNavClick={handleNavClick}
               items={products}
@@ -109,7 +109,7 @@ function Nav() {
           <li><a>Liquid</a></li>
           {bulksCount &&
             <NavOption
-              optionTitle='BulksUncategorized'
+              optionTitle='Uncategorized'
               option='bulks-uncategorized'
               handleNavClick={handleNavClick}
               items={bulks}
@@ -129,7 +129,7 @@ function Nav() {
           <li><a>Non-Actives</a></li>
           {rawMaterialsCount &&
             <NavOption
-              optionTitle='RawMaterialsUncategorized'
+              optionTitle='Uncategorized'
               option='raw-materials-uncategorized'
               handleNavClick={handleNavClick}
               items={rawMaterials}
