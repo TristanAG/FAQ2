@@ -34,7 +34,7 @@ function Tab({ tabActive, tab, handleClick }) {
     //   <a><span>{sanitizedFirstString + ' ' + sanitizedSecondString}</span></a>
     // </li>
 
-    <li className={tabActive === tab && 'is-active'} onClick={() => handleClick(tab)}>
+    <li className={tabActive === tab ? 'is-active' : ''} onClick={() => handleClick(tab)}>
       <a><span>{tab}</span></a>
     </li>
 

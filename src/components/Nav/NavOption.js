@@ -8,16 +8,16 @@ function NavOption({ option, handleNavClick, items, isActive, itemCount, itemTyp
 
   return(
     <>
-      <li
+      <div
         onClick={() => handleNavClick(option)}
-        className={isActive === option && 'is-active has-background-white-ter'}
+        className={isActive === option ? 'is-active has-background-white-ter' : ''}
       >
         <a>{optionTitle} <span className="tag is-info is-pulled-right">{itemCount}</span></a>
-      </li>
+      </div>
       <ul className={isActive === option ? 'is-active' : 'hidden'}>
         {items.map(item => {
           return (
-            <li>
+            <li key={item.id}>
               <Link
                 to={{
                   pathname: '/product',
