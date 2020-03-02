@@ -10,6 +10,8 @@ function Product(props) {
   const [images, setImages] = React.useState('')
 
   function LoadProductData() {
+    console.log('termlimitz')
+    console.log(props.location.state.itemUrl)
     const url = 'https://' + props.location.state.itemUrl.split('http://')[1]
     fetch(url)
       .then(response => response.json())
