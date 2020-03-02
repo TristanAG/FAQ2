@@ -639,6 +639,7 @@ function Nav() {
         <li>
           <li><a>Actives</a></li>
           <li><a>Non-Actives</a></li>
+          <li><a>Uncategorized</a></li>
         </li>
       </ul>
       <p className="menu-label">

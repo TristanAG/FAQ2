@@ -15,7 +15,7 @@ function Product(props) {
       .then(response => response.json())
       .then(json => {
         console.log('jsnnn')
-        console.log(json.bulk.meta.detail_url)
+        console.log(json)
         setProductData({
           'title': json.title,
           'productType': json.product_type,
@@ -34,8 +34,6 @@ function Product(props) {
 
   return (
     <section className="grocery-list">
-      {/* {console.log('this is theplace')}
-      {console.log(productData.info && productData.info.split('<p>Product Image: ')[1].split('</p>')[0])} */}
       <div className="container">
         <div className="content">
           <h2 className="has-text-grey">{productData.title}</h2>
