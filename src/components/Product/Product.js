@@ -5,9 +5,7 @@ import Tabs from '../Tabs'
 //TODO ASK Ryan, are you configuring a way to upload images? Will it be identical to how it's formatted now (PD uploads cloudinary links or Wagtail handles it?
 
 function Product(props) {
-
   const [productData, setProductData] = React.useState({})
-  const [images, setImages] = React.useState('')
 
   function LoadProductData() {
     console.log('termlimitz')

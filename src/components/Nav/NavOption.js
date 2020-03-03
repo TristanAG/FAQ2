@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 
-function NavOption({ option, handleNavClick, items, isActive, itemCount, itemType, optionTitle }) {
+function NavOption({ link, option, handleNavClick, items, isActive, itemCount, itemType, optionTitle }) {
   function handleLinkClick(option) {
     setTimeout(function(){ window.scrollTo(0,0) }, 180);
   }
@@ -20,7 +20,7 @@ function NavOption({ option, handleNavClick, items, isActive, itemCount, itemTyp
             <li key={item.id}>
               <Link
                 to={{
-                  pathname: '/product',
+                  pathname: `/${link}`,
                   state: {
                     itemUrl: item.meta.detail_url,
                     itemName: item.title

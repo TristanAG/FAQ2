@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import Product from '../Product/Product'
 import NavOption from './NavOption'
 
 function Nav() {
@@ -88,6 +87,7 @@ function Nav() {
           <li><a>Gummies</a></li>
           {productsCount &&
             <NavOption
+              link='product'
               optionTitle='Uncategorized'
               option='products-uncategorized'
               handleNavClick={handleNavClick}
@@ -109,6 +109,7 @@ function Nav() {
           <li><a>Liquid</a></li>
           {bulksCount &&
             <NavOption
+              link='bulk'
               optionTitle='Uncategorized'
               option='bulks-uncategorized'
               handleNavClick={handleNavClick}

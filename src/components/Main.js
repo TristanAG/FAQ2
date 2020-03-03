@@ -6,6 +6,7 @@ import '../css/App.css'
 import Nav from './Nav/Nav'
 import Home from './Home'
 import Product from './Product/Product'
+import Bulk from './Bulk/Bulk'
 
 function Main() {
   const user = 'Tristan'
@@ -36,6 +37,7 @@ function Main() {
               {
                 <>
                   <Route path="/product/" component={Product} />
+                  <Route path="/bulk/" component={Bulk} />
                 </>
               }
               <Route path="/" exact component={Home} />
