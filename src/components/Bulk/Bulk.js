@@ -8,14 +8,12 @@ function Bulk(props) {
   const [bulkData, setBulkData] = React.useState({})
 
   function LoadBulkData() {
-    console.log('QQQtermlimitz')
-    console.log(props.location.state.itemUrl)
     const url = 'https://' + props.location.state.itemUrl.split('http://')[1]
     fetch(url)
       .then(response => response.json())
       .then(json => {
         console.log('BULKjsnnn')
-        console.log(json.bulk_ingredients)
+        console.log(json)
         setBulkData({
           'title': json.title,
           'bulkType': json.bulk_type,
