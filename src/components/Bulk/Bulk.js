@@ -1,5 +1,5 @@
 import React from 'react'
-import Tabs from '../Tabs'
+import Tabs from './Tabs'
 
 //TODO create function to get image out of product data
 //TODO ASK Ryan, are you configuring a way to upload images? Will it be identical to how it's formatted now (PD uploads cloudinary links or Wagtail handles it?
@@ -15,7 +15,7 @@ function Bulk(props) {
       .then(response => response.json())
       .then(json => {
         console.log('BULKjsnnn')
-        console.log(json)
+        console.log(json.bulk_ingredients)
         setBulkData({
           'title': json.title,
           'bulkType': json.bulk_type,
@@ -35,16 +35,16 @@ function Bulk(props) {
   return (
     <section className="grocery-list">
 
-      {bulkData.bulkIngredients && bulkData.bulkIngredients.map(b => (
+      {/* {bulkData.bulkIngredients && bulkData.bulkIngredients.map(b => (
         <p key={b.bulk_ingredient.id}><a href={b.bulk_ingredient.meta.detail_url}>{b.bulk_ingredient.title}</a></p>
-      ))}
+      ))} */}
       <div className="container">
         <div className="content">
           <h2 className="has-text-grey">{bulkData.title}</h2>
           <h4>Product Type: {bulkData.bulkType ? 'we got it' : 'not set in admin'}</h4>
 
         </div>
-        <Tabs info={bulkData.info} faqs={bulkData.faqs} tabList={['General Information', 'FAQs']} />
+        <Tabs info={bulkData.info} faqs={bulkData.faqs} rawMaterials={bulkData.bulkIngredients} tabList={['Manufacturing', 'FAQs', 'Images', 'Raw Materials', 'Products', 'Allergens']} />
       </div>
     </section>
   )
