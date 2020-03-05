@@ -1,5 +1,5 @@
 import React from 'react'
-import Tabs from '../Tabs'
+import Tabs from './Tabs'
 import { Link } from "react-router-dom"
 
 //TODO create function to get image out of product data
