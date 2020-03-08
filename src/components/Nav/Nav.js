@@ -130,6 +130,7 @@ function Nav() {
           <li><a>Non-Actives</a></li>
           {rawMaterialsCount &&
             <NavOption
+              link='raw-material'
               optionTitle='Uncategorized'
               option='raw-materials-uncategorized'
               handleNavClick={handleNavClick}
